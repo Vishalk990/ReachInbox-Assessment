@@ -15,6 +15,9 @@ module.exports = {
       screens: {
         "2xl": "1400px",
       },
+      fontFamily: {
+        'sf-pro-display': ['"SF Pro Display"', 'sans-serif'],
+      },
     },
     extend: {
       colors: {

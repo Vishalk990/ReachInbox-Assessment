@@ -1,24 +1,25 @@
 
 import { Mail, Send } from 'lucide-react';
+const leadData = {
+  name: 'Orlando',
+  contactNo: '+54-9062827869',
+  emailId: 'orlando@gmail.com',
+  linkedin: 'linkedin.com/in/timvadde/',
+  companyName: 'Reachinbox',
+  campaign: {
+    name: 'Campaign Name',
+    steps: 3,
+    daysInSequence: 5,
+    activities: [
+      { step: 1, type: 'Email', status: 'Sent', date: '3rd, Feb' },
+      { step: 2, type: 'Email', status: 'Opened', date: '5th, Feb' },
+      { step: 3, type: 'Email', status: 'Opened', date: '5th, Feb' },
+    ],
+  },
+};
 
-const LeadDetailsComponent = () => {
-  const leadData = {
-    name: 'Orlando',
-    contactNo: '+54-9062827869',
-    emailId: 'orlando@gmail.com',
-    linkedin: 'linkedin.com/in/timvadde/',
-    companyName: 'Reachinbox',
-    campaign: {
-      name: 'Campaign Name',
-      steps: 3,
-      daysInSequence: 5,
-      activities: [
-        { step: 1, type: 'Email', status: 'Sent', date: '3rd, Feb' },
-        { step: 2, type: 'Email', status: 'Opened', date: '5th, Feb' },
-        { step: 3, type: 'Email', status: 'Opened', date: '5th, Feb' },
-      ],
-    },
-  };
+const LeadDetails = () => {
+ 
 
   const DetailItem = ({ label, value }) => (
     <div className="flex justify-between py-2 border-b border-gray-700">
@@ -50,7 +51,7 @@ const LeadDetailsComponent = () => {
   );
 
   return (
-    <div className="bg-gray-900 text-white p-4 max-w-sm">
+    <div className="bg-[#000000] text-white p-4 max-w-sm">
       <h2 className="text-lg font-bold mb-4">Lead Details</h2>
       
       <div className="mb-6">
@@ -79,4 +80,4 @@ const LeadDetailsComponent = () => {
   );
 };
 
-export default LeadDetailsComponent;
+export default LeadDetails;

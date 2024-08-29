@@ -1,21 +1,23 @@
 import RefreshIcon from "@/assets/RefreshIcon";
 import { ChevronDown, Search } from "lucide-react";
-import { emailData, EmailItem } from "./EmailItem";
+import { EmailItem } from "./EmailItem";
 import { Input } from "./ui/input";
 import axios from "axios";
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmails, setError, setLoading } from "@/utils/emailSlice";
 
 const InboxDetails = () => {
-  const [allEmails, setAllEmails] = useState([]);
+  const dispatch = useDispatch();
+
+  const { allEmails } = useSelector((state) => state.emails);
   const token = useSelector((state) => state.user.token);
 
-  const handleRefresh = () => {
-
-  };
+  const handleRefresh = () => {};
 
   useEffect(() => {
     const fetchAllMails = async () => {
+      dispatch(setLoading(true));
       try {
         const response = await axios.get(
           "https://hiring.reachinbox.xyz/api/v1/onebox/list",
@@ -25,17 +27,15 @@ const InboxDetails = () => {
             },
           }
         );
-        setAllEmails(response?.data?.data);
-        // setAllEmails(() => (response?.data.data));
-        // console.log(response?.data?.data);
-        // console.log(allEmails);
+        dispatch(setEmails(response?.data?.data));
       } catch (error) {
         console.log("Error: ", error);
+        dispatch(setError(error.message));
       }
     };
 
     fetchAllMails();
-  }, [token]);
+  }, [dispatch, token]);
 
   return (
     <div className="bg-[#000000] text-white h-full flex flex-col">
@@ -52,7 +52,7 @@ const InboxDetails = () => {
             <span className="text-[#7F7F7F] font-normal">Inboxes selected</span>
           </span>
           <div className="w-8 h-8 bg-[#25262B] rounded-sm cursor-pointer flex justify-center items-center">
-            <RefreshIcon onClick={handleRefresh} />
+            <RefreshIcon className="w-4 h-4" onClick={handleRefresh} />
           </div>
         </div>
       </div>
@@ -65,14 +65,11 @@ const InboxDetails = () => {
         />
         <Search className="w-4 h-4 absolute left-5 top-1/2 transform -translate-y-1/2 text-gray-400" />
       </div>
-      {/* 
-      <div className="text-[#33383F] border h-[2px] w-[255px] text-center">
-      </div> */}
 
       <div className="flex justify-between items-center px-3 mb-4">
         <div className="flex items-center gap-2">
           <div className="bg-[#222426] flex justify-center items-center w-8 h-6 rounded-2xl">
-            <span className="font-bold text-blue-400">26</span>
+            <span className="font-bold text-blue-400">{allEmails.length}</span>
           </div>
           <span>New Replies</span>
         </div>
