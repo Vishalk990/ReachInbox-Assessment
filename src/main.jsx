@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
@@ -7,6 +6,8 @@ import "./index.css";
 import Dashboard from "./components/Dashboard.jsx";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore.js";
+import Inbox from "./components/Inbox.jsx";
+import DashboardHome from "./components/DashboardHome.jsx";
 
 const router = createBrowserRouter([
   {
@@ -18,13 +19,21 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children: [
+      {
+        path: "",
+        element: <DashboardHome />,
+      },
+      {
+        path: "onebox",
+        element: <Inbox />,
+      },
+    ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode>
-    <Provider store={appStore}>
-      <RouterProvider router={router} />
-    </Provider>
-  </StrictMode>
+  <Provider store={appStore}>
+    <RouterProvider router={router} />
+  </Provider>
 );
