@@ -81,6 +81,23 @@
   scrollbar-width: thin;
   scrollbar-color: #4a4a4a #1a1a1a;
 }
+/* Hide scrollbar for all elements with .scrollbar-hide */
+.scrollbar-hide {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.scrollbar-hide::-webkit-scrollbar { /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+/* Optional: Add smooth scrolling */
+.scrollbar-hide {
+  scroll-behavior: smooth;
+}
+
+
 @layer base {
   * {
     @apply border-border;

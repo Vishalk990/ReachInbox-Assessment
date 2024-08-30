@@ -26,14 +26,16 @@ const Inbox = () => {
       setEmail(response?.data?.data);
     };
     fetchEmail();
-  }, [id,token]);
+  }, [id, token]);
 
   return (
     <div className="w-full grid grid-cols-[280px_minmax(500px,1fr)_278px]">
       <div className="border-r border-[#33383F]">
         <InboxDetails />
       </div>
-      <div className="">{id ? <EmailDetails id={id} email={email} /> : <Outlet />}</div>
+      <div className="">
+        {id ? <EmailDetails id={id} email={email} /> : <Outlet />}
+      </div>
       <div className="">
         <LeadDetailsComponent />
       </div>
