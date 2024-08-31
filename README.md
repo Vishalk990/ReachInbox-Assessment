@@ -1,28 +1,8 @@
-<p align=""><a href="https://youtu.be/5wIcO9iH2I4">Live Demo</a></p>
+# React + Vite
 
-# About This Project
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Tech Stack
+Currently, two official plugins are available:
 
-- **React + Vite**: For building the user interface with a fast development environment.
-- **Tailwind CSS**: For styling the application with a utility-first approach.
-- **ShadCN**: For UI components and design consistency.
-- **Axios**: For making HTTP requests.
-- **Redux Toolkit**: For state management.
-
-## Deployed Link
-
-You can view the live application [here](https://vishal-kalita-projects-reachinbox.vercel.app/).
-
-## Setting Up Locally
-
-Below are the instructions to set up this project on your local machine.
-
-### Prerequisites
-
-- Node.js and npm must be installed on your system.
-
-### Cloning the Repository
-
-```bash
-git clone https://github.com/Vishalk990/ReachInbox-Assessment.git
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
