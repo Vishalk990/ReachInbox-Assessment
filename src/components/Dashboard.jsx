@@ -3,12 +3,32 @@ import { Switch } from "./ui/switch";
 import { Moon } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsDarkMode, toggleTheme } from "@/utils/themeSlice";
-import { Outlet } from "react-router-dom";
-
+import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { addUser } from "@/utils/userSlice";
+import axios from "axios";
 
 const Dashboard = () => {
   const isDarkMode = useSelector(selectIsDarkMode);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  // console.log(token);
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams);
+
+    const token = urlParams.get("token");
+
+    if (token) {
+      dispatch(addUser(token));
+      localStorage.setItem("token", token);
+
+      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    } else {
+      navigate("/");
+    }
+  }, [dispatch, navigate]);
 
   return (
     <div
@@ -48,7 +68,7 @@ const Dashboard = () => {
             <div>Tim&apos;s Workspace</div>
           </div>
         </nav>
-        <Outlet/>
+        <Outlet />
       </div>
     </div>
   );

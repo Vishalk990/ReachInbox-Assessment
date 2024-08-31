@@ -12,6 +12,7 @@ import SelectEmailPage from "./components/SelectEmailPage.jsx";
 import Error from "./components/Error.jsx";
 import EmailDetails from "./components/EmailDetails.jsx";
 
+
 const router = createBrowserRouter([
   {
     path: "/",

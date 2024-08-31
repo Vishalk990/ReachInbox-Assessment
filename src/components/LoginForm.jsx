@@ -11,28 +11,30 @@ export const LoginForm = () => {
 
   const handleLoginForm = async () => {
     try {
+      // window.location.href =
+      //   "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://reach-inbox-assessment.vercel.app/";
       window.location.href =
-        "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=https://reach-inbox-assessment.vercel.app/";
+        "https://hiring.reachinbox.xyz/api/v1/auth/google-login?redirect_to=http://localhost:5173/dashboard";
     } catch (err) {
       console.error("Login Error: ", err);
     }
   };
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    console.log(urlParams);
-    
-    const token = urlParams.get("token");
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   console.log(urlParams);
 
-    if (token) {
-      dispatch(addUser(token));
-      localStorage.setItem("token",token);
+  //   const token = urlParams.get("token");
 
-      axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  //   if (token) {
+  //     dispatch(addUser(token));
+  //     localStorage.setItem("token", token);
 
-      navigate("/dashboard");
-    }
-  }, [dispatch, navigate]);
+  //     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+
+  //     // navigate("/dashboard");
+  //   }
+  // }, [dispatch, navigate]);
 
   return (
     <div className="w-full max-w-md">
